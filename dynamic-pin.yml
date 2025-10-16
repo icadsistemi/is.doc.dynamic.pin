@@ -10,7 +10,7 @@ servers:
   - url: "https://mxp-public-dynamic-pin-api.prod.icadsistemi.com/v1"
     description: Production
 paths:
-  /generate:
+  /pin/generate:
     post:
       tags:
         - PIN

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Dynamic PIN Partner API documentation" />
+    <title>ICAD Sistemi Dynamic PIN Partner API</title>
+    <link rel="stylesheet" href="https://unpkg.com/swagger-ui-dist@5.29.4/swagger-ui.css" />
+</head>
+
+<body>
+    <div id="swagger-ui"></div>
+    <script src="https://unpkg.com/swagger-ui-dist@5.29.4/swagger-ui-bundle.js" crossorigin></script>
+    <script>
+        window.onload = () => {
+            window.ui = SwaggerUIBundle({
+                url: 'https://raw.githubusercontent.com/icadsistemi/is.doc.dynamic.pin/refs/heads/master/dynamic-pin.yaml',
+                dom_id: '#swagger-ui',
+            });
+        };
+    </script>
+</body>
+
+</html>

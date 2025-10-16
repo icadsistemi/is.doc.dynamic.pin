@@ -1,0 +1,67 @@
+openapi: 3.1.0
+
+info:
+  title: ICAD Sistemi Dynamic PIN Partner API
+  version: 1.0.0-beta.1
+  description: Dynamic PIN service.
+servers:
+  - url: "https://mxp-public-dynamic-pin-api.dev.icadsistemi.com/v1"
+    description: Development
+  - url: "https://mxp-public-dynamic-pin-api.prod.icadsistemi.com/v1"
+    description: Production
+paths:
+  /generate:
+    post:
+      tags:
+        - PIN
+      summary: Generate a new Dynamic PIN
+      operationId: generateDynamicPin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                card_number:
+                  type: string
+                  description: Card code
+                  example: "1234"
+                card_type:
+                  type: integer
+                  description: Card type enumeration
+                  example: 1
+                supplier_code:
+                  type: string
+                  description: Supplier code
+                  example: "SUP123"
+                user_email:
+                  type: string
+                  description: User email address
+                  format: email
+                user_token:
+                  type: string
+                  description: User token to be authenticated against partner IDP
+              required:
+                - user_email
+                - card
+                - user_token
+      responses:
+        "200":
+          description: Successfully generated a new Dynamic PIN.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  pin:
+                    type: string
+                    description: The generated Dynamic PIN.
+                  expires_at:
+                    type: integer
+                    format: unix
+                    description: The expiration time of the PIN in unix timestamp format.
+        "400":
+          description: Bad Request - Invalid input parameters.
+        "500":
+          description: Internal Server Error - An error occurred while generating the PIN.

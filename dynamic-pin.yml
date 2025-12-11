@@ -35,17 +35,18 @@ paths:
                   type: string
                   description: Supplier code
                   example: "SUP123"
-                user_email:
+                user:
                   type: string
-                  description: User email address
-                  format: email
+                  description: User identifier, could be email or username
                 user_token:
                   type: string
                   description: User token to be authenticated against partner IDP
               required:
-                - user_email
-                - card
+                - user
+                - card_number
+                - card_type
                 - user_token
+                - supplier_code
       responses:
         "200":
           description: Successfully generated a new Dynamic PIN.
